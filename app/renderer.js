@@ -1,8 +1,17 @@
+const { shell } = require('electron');
+
 const newLinkUrl = document.querySelector('#new-link-url');
 const newLinkSubmit = document.querySelector('.new-link-form--submit');
 const newLinkForm = document.querySelector('.new-link-form');
 const linkTemplate = document.querySelector('#link-template');
 const linksSection = document.querySelector('.links');
+
+linksSection.addEventListener('click', (event) => {
+    if(event.target.href){
+        event.preventDefault();
+        shell.openExternal(event.target.href)
+    }
+});
 
 newLinkUrl.addEventListener('keyup', () => {
     newLinkSubmit.disabled = !newLinkUrl.validity.valid;
