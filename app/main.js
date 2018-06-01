@@ -2,6 +2,7 @@
 // Object destructuring
 const { app, BrowserWindow } = require('electron');
 
+
 let mainWindow = null; // always available in the global scope
 
 // app is fully started and ready
@@ -20,6 +21,7 @@ app.on('ready', () => {
     });
 
     mainWindow.loadURL(`file://${__dirname}/index.html`);
+    require('devtron').install();
 });
 
 // Browser windows are a way to create renderer processes
